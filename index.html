@@ -11,12 +11,32 @@
   <div class="app">
     <h1 class="app__heading">To do list</h1>
     <div class="app__newDo">
-      <h2 class="app__subheading">New to do</h2>
-      <input type="text" class="app__todo" placeholder="Enter new task" />
-      <button class="app__addDo">
+      <input id="newTask" type="text" placeholder="Enter new task" />
+      <button onclick="addTodo()">
         &plus;
       </button>
     </div>
+    <div class="app__todos">
+      <h2 class="app__subheading">To do's</h2>
+      <div id="todos"></div>
+      <!-- <div class="app__todo">
+        <input type="text" />
+        <button class="app__todo--check">
+          &#10004;
+        </button>
+        <button class="app__todo--delete">
+          &#10007;
+        </button>
+        <button class="app__todo--edit">
+          &#9998;
+        </button>
+      </div> -->
+    </div>
+    <div id="completed" class="app__completed">
+      <h2 class="app__subheading">Completed</h2>
+    </div>
   </div>
+
+  <script src="./app.js"></script>
 </body>
 </html>
