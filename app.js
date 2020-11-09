@@ -1,16 +1,5 @@
 let todoList = [];
-let completedList = [];
-
-/*let todo = {
-  list: [],
-  finList: [],
-  addTodo = () => {
-    console.log("added");
-  },
-  finTodo() {
-    console.log("finished");
-  },
-}*/
+let completedList = []
 
 function renderTodos() {
 
@@ -69,7 +58,6 @@ function addTodo() {
   const task = document.getElementById("newTask");
 
   if (task.value === "") {
-    //console.log('task cant be empty');
     taskNameValidator(task);
   } else {
     task.classList.remove('invalidTask');
@@ -113,13 +101,3 @@ function taskNameValidator(task) {
   task.classList.add('invalidTask');
   task.placeholder = 'Invalid task name';
 }
-/*
-class Todo {
-  constructor(todo) {
-    this.todo = todo;
-  }
-
-  completeTodo() {}
-  deleteTodo() {}
-  editTodo() {}
-}*/
