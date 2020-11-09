@@ -1,21 +1,39 @@
 let todoList = [];
 let completedList = [];
 
-function addTodo() {
-  const task = document.getElementById("newTask").value;
-  
-  todoList.push(task);
+/*let todo = {
+  list: [],
+  finList: [],
+  addTodo = () => {
+    console.log("added");
+  },
+  finTodo() {
+    console.log("finished");
+  },
+}*/
+
+function renderTodos() {
+
+  // remove edit inline style, add SVG's
+
   let todoMarkup = todoList.map(task => `
     <div class="app__todo">
       <input type="text" value="${task}" disabled />
-      <button class="app__todo--check">
+      <button 
+        style="color: #444"
+        class="app__todo--edit"
+        onclick="editTodo(this)">
+        &#9998;
+      </button>
+      <button 
+        class="app__todo--check"
+        onclick="completeTodo('${task}')">
         &#10004;
       </button>
-      <button class="app__todo--delete">
+      <button 
+        class="app__todo--delete"
+        onclick="deleteTodo('${task}')">
         &#10007;
-      </button>
-      <button class="app__todo--edit">
-        &#9998;
       </button>
     </div>
   `);
@@ -23,15 +41,85 @@ function addTodo() {
   document.getElementById('todos').innerHTML = todoMarkup.join("");
 }
 
-function completeTodo() {
-  const task = todoList.splice();
+function renderCompleted() {
 
+  // remove edit inline style, add SVG's
+
+  let completedMarkup = completedList.map(task => `
+    <div class="app__todo">
+      <input type="text" value="${task}" disabled />
+      <button
+        style="color: #444" 
+        class="app__todo--edit"
+        onclick="editTodo(this)">
+        &#9998;
+      </button>
+      <button 
+        class="app__todo--delete"
+        onclick="deleteTodo('${task}')">
+        &#10007;
+      </button>
+    </div>
+  `);
+
+  document.getElementById('finTodos').innerHTML = completedMarkup.join("");
 }
 
-function deleteTodo() {
+function addTodo() {
+  const task = document.getElementById("newTask");
 
+  if (task.value === "") {
+    //console.log('task cant be empty');
+    taskNameValidator(task);
+  } else {
+    task.classList.remove('invalidTask');
+    task.placeholder = 'Enter new task';
+
+    todoList.push(task.value);
+    renderTodos();
+  }
 }
 
-function editTodo() {
+function completeTodo(task) {
+  todoList.splice(todoList.indexOf(task), 1);
+  completedList.push(task);
 
+  renderTodos();
+  renderCompleted();
 }
+
+function deleteTodo(task) {
+  if (todoList.includes(task)) {
+    todoList.splice(todoList.indexOf(task), 1);
+    renderTodos();
+  } else {
+    completedList.splice(completedList.indexOf(task), 1);
+    renderCompleted();
+  }
+}
+
+function editTodo(element) {
+  let input = element.parentNode.firstElementChild;
+  let task = input.value;
+
+  if (task === "") {
+    taskNameValidator(input);
+  } else {
+    input.toggleAttribute('disabled'); // Turns input on and off
+  }
+}
+
+function taskNameValidator(task) {
+  task.classList.add('invalidTask');
+  task.placeholder = 'Invalid task name';
+}
+/*
+class Todo {
+  constructor(todo) {
+    this.todo = todo;
+  }
+
+  completeTodo() {}
+  deleteTodo() {}
+  editTodo() {}
+}*/

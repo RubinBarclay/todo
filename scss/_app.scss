@@ -19,8 +19,7 @@
   }
 
   &__subheading {
-    font-size: 1.2rem;
-    margin-left: 6px;
+    font-size: 1rem;
     width: 100%;
     border-bottom: 2px solid rgba(255, 255, 255, 0.6);
   }
@@ -51,7 +50,7 @@
     }
 
     &--edit {
-      background-color: lightblue;
+      background-color: #fff; //lightblue;
     }
   }
 }
