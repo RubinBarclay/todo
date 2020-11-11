@@ -13,16 +13,18 @@
     <div class="app__newDo">
       <input id="newTask" type="text" placeholder="Enter new task" />
       <button id="addTask">
-        &plus;
+        <svg class="icon icon-plus">
+          <use xlink:href="./img/sprites.svg#icon-plus"></use>
+        </svg>
       </button>
     </div>
-    <div class="app__todos">
+    <div class="app__todo-container hidden">
       <h2 class="app__subheading">&nbsp; To do's</h2>
-      <div id="todos"></div>
+      <div id="todos"><!-- New todos go here --></div>
     </div>
-    <div id="completed" class="app__completed">
+    <div class="app__todo-container hidden">
       <h2 class="app__subheading">&nbsp; Completed</h2>
-      <div id="finTodos"></div>
+      <div id="completed"><!-- Completed todos go here --></div>
     </div>
   </div>
 

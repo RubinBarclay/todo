@@ -1,5 +1,5 @@
 // Variables
-$primary-color: #96fbc4;
+$primary-color: #30e8bf; // #ff8235; // #96fbc4;
 $secondary-color: #f9f586;
 
 $text-color: #333;
@@ -15,6 +15,7 @@ $text-color: #333;
     color: $text-color;
     border-style: none;
     padding: 1rem;
+    outline: none;
 
     &:disabled {
       color: $text-color;
@@ -26,6 +27,7 @@ $text-color: #333;
     border-style: none;
     color: inherit;
     padding: 1rem 1.2rem;
+    outline: none;
   }
 
   & button:hover {

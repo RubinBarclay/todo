@@ -31,17 +31,18 @@ let todo = {
     let input = elem.parentNode.firstElementChild;
     let task = input.value;
     
-    // Remove old entry and add the edited task
-    if (input.hasAttribute("disabled")) { 
-      list.splice(list.indexOf(task), 1, 'EDITED_TASK');
-    } else {
-      list.splice(list.indexOf('EDITED_TASK'), 1, task);
-      (list === todo.todoList) ? renderTodos() : null;
-    }
-
     if (task === "") {
       taskNameValidator(input);
     } else {
+      
+      // Remove old entry and add the edited task
+      if (input.hasAttribute("disabled")) { 
+        list.splice(list.indexOf(task), 1, '');
+      } else {
+        list.splice(list.indexOf(''), 1, task);
+        (list === todo.todoList) ? renderTodos() : null;
+      }
+      
       input.toggleAttribute('disabled'); // Toggles input field on and off
     }
   }
@@ -55,25 +56,39 @@ function renderTodos() {
     <div class="app__todo">
       <input type="text" value="${task}" disabled />
       <button 
-        style="color: #444"
         class="app__todo--edit"
         onclick="todo.editTodo(this, todo.todoList)">
-        &#9998;
+        <svg class="icon icon-pencil">
+          <use xlink:href="./img/sprites.svg#icon-pencil"></use>
+        </svg>
       </button>
       <button 
         class="app__todo--check"
         onclick="todo.completeTodo('${task}')">
-        &#10004;
+        <svg class="icon icon-plus">
+          <use xlink:href="./img/sprites.svg#icon-check"></use>
+        </svg>
       </button>
       <button 
         class="app__todo--delete"
         onclick="todo.deleteTodo('${task}', todo.todoList)">
-        &#10007;
+        <svg class="icon icon-plus">
+          <use xlink:href="./img/sprites.svg#icon-close"></use>
+        </svg>
       </button>
     </div>
   `);
 
-  document.getElementById('todos').innerHTML = todoMarkup.join("");
+  let targetElem = document.getElementById('todos');
+  let parentElem = targetElem.parentElement;
+
+  if (todo.todoList.length === 0) {
+    parentElem.classList.add('hidden');
+  } else {
+    parentElem.classList.remove('hidden');
+  }
+  
+  targetElem.innerHTML = todoMarkup.join("");
 }
 
 function renderCompleted() {
@@ -87,17 +102,30 @@ function renderCompleted() {
         style="color: #444" 
         class="app__todo--edit"
         onclick="todo.editTodo(this, todo.completedList)">
-        &#9998;
+        <svg class="icon icon-pencil">
+          <use xlink:href="./img/sprites.svg#icon-pencil"></use>
+        </svg>
       </button>
       <button 
         class="app__todo--delete"
         onclick="todo.deleteTodo('${task}', todo.completedList)">
-        &#10007;
+        <svg class="icon icon-plus">
+          <use xlink:href="./img/sprites.svg#icon-close"></use>
+        </svg>
       </button>
     </div>
   `);
 
-  document.getElementById('finTodos').innerHTML = completedMarkup.join("");
+  let targetElem = document.getElementById('completed');
+  let parentElem = targetElem.parentElement;
+
+  if (todo.completedList.length === 0) {
+    parentElem.classList.add('hidden');
+  } else {
+    parentElem.classList.remove('hidden');
+  }
+
+  targetElem.innerHTML = completedMarkup.join("");
 }
 
 function taskNameValidator(task) {

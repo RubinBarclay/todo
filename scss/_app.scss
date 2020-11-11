@@ -9,7 +9,7 @@
   padding: 2rem;
   border: 4px solid #fff;
   border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.05);
 
   &__heading {
     font-size: 2.6rem;
@@ -32,9 +32,25 @@
     }
   }
 
-  &__todos {
-    margin: 6px 0;
-    // ADD A MAX HEIGHT WITH OVERFLOW AUTO (hide scroll bar)
+  &__todo-container {
+    margin-top: 6px;
+    max-height: 25vh;
+    overflow: auto;
+
+    // Not supported by Firefox and IE
+    &::-webkit-scrollbar {
+      background-color: transparent;
+
+      &-thumb {
+        background-color: #fff;
+        border-radius: 60px;
+      }
+    }
+  }
+
+  &__completed {
+    max-height: 25vh;
+    overflow: auto;
   }
 
   &__todo {
@@ -50,7 +66,7 @@
     }
 
     &--edit {
-      background-color: #fff; //lightblue;
+      background-color: #fff;
     }
   }
 }
