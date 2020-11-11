@@ -1,6 +1,0 @@
- 
-To do app:
-
-- List items should be instances of JS List Item class
-- this class should have methods to edit item (complete, remove, edit)
-- Consider using sass for styling, easier to readi
