@@ -1,5 +1,3 @@
-//const { render } = require("node-sass");
-
 let todo = {
   todoList: [],
   completedList: [],
@@ -49,9 +47,6 @@ let todo = {
 }
 
 function renderTodos() {
-
-  // remove edit inline style, add SVG's
-
   let todoMarkup = todo.todoList.map(task => `
     <div class="app__todo">
       <input type="text" value="${task}" disabled />
@@ -92,9 +87,6 @@ function renderTodos() {
 }
 
 function renderCompleted() {
-
-  // remove edit inline style, add SVG's
-
   let completedMarkup = todo.completedList.map(task => `
     <div class="app__todo">
       <input type="text" value="${task}" disabled />
