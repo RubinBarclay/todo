@@ -53,23 +53,17 @@ function renderTodos() {
       <button 
         class="app__todo--edit"
         onclick="todo.editTodo(this, todo.todoList)">
-        <svg class="icon icon-pencil">
-          <use xlink:href="./img/sprites.svg#icon-pencil"></use>
-        </svg>
+        <i class="fa fa-pencil app__todo__icon--edit" aria-hidden="true"></i>
       </button>
       <button 
         class="app__todo--check"
         onclick="todo.completeTodo('${task}')">
-        <svg class="icon icon-plus">
-          <use xlink:href="./img/sprites.svg#icon-check"></use>
-        </svg>
+        <i class="fa fa-check app__todo__icon" aria-hidden="true"></i>
       </button>
       <button 
         class="app__todo--delete"
         onclick="todo.deleteTodo('${task}', todo.todoList)">
-        <svg class="icon icon-plus">
-          <use xlink:href="./img/sprites.svg#icon-close"></use>
-        </svg>
+        <i class="fa fa-close app__todo__icon" aria-hidden="true"></i>
       </button>
     </div>
   `);
@@ -94,16 +88,12 @@ function renderCompleted() {
         style="color: #444" 
         class="app__todo--edit"
         onclick="todo.editTodo(this, todo.completedList)">
-        <svg class="icon icon-pencil">
-          <use xlink:href="./img/sprites.svg#icon-pencil"></use>
-        </svg>
+        <i class="fa fa-pencil app__todo__icon--edit" aria-hidden="true"></i>
       </button>
       <button 
         class="app__todo--delete"
         onclick="todo.deleteTodo('${task}', todo.completedList)">
-        <svg class="icon icon-plus">
-          <use xlink:href="./img/sprites.svg#icon-close"></use>
-        </svg>
+        <i class="fa fa-close app__todo__icon" aria-hidden="true"></i>
       </button>
     </div>
   `);

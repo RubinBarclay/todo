@@ -68,5 +68,13 @@
     &--edit {
       background-color: #fff;
     }
+
+    &__icon {
+      font-size: 1.2em;
+
+      &--edit {
+        color: #888;
+      }
+    }
   }
 }
